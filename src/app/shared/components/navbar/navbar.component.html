@@ -1,11 +1,12 @@
 <p>
     <mat-toolbar color="primary">
         <span>App de usuarios</span>
+        <a class="add-user" (click)="openDialog()" mat-button routerLinkActive="active">Agregar nuevo usuario</a>
         <span class="spacer"></span>
-        <button mat-icon-button class="favorite-icon" aria-label="Ícono favoritos">
+        <button mat-icon-button fxHide.xs="true" aria-label="Ícono favoritos">
             <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="" aria-label="Ícono compartir">
+        <button mat-icon-button fxHide.xs="true" aria-label="Ícono compartir">
             <mat-icon>share</mat-icon>
         </button>
     </mat-toolbar>

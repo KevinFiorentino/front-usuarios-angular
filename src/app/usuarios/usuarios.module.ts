@@ -11,7 +11,7 @@ import { CardComponent } from './components/card/card.component';
 @NgModule({
   declarations: [
     PageUsuariosComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     CommonModule,
