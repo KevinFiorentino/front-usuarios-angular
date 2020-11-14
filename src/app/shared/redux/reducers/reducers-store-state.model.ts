@@ -22,9 +22,15 @@ export function reducerUsuarios(state: StoreStateUsuarios, action: UsuariosActio
       };
     }
     case StoreStateTypes.EDITAR_USUARIO: {
-      console.log('EDIT');
       return {
         ...state,
+        storeUsuarios: [
+          ...state.storeUsuarios.map(user => {
+            return user.id === (action as EditarUsuarioAction).usuario.id ?
+            (action as EditarUsuarioAction).usuario :
+            user;
+          }),
+        ]
       };
     }
     case StoreStateTypes.ELIMINAR_USUARIO: {

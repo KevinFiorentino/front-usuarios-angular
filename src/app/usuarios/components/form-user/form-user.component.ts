@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/redux/config-store-state.model';
-import { NuevoUsuarioAction } from '@shared/redux/actions/actions-store-state.model';
+import { NuevoUsuarioAction, EditarUsuarioAction } from '@shared/redux/actions/actions-store-state.model';
 import { BackHttpClientService } from '@shared/services/back-http-client/back-http-client.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -28,6 +28,7 @@ export class FormUserComponent {
     private backHttpClientService: BackHttpClientService) {
 
       if (dataUser) {
+        // Autocompletamos el formulario con los datos de entrada
         this.formUser.patchValue(dataUser);
       }
 
@@ -37,17 +38,19 @@ export class FormUserComponent {
   addOrEditUser(): void {
 
     if (!this.dataUser) {
+      // Si no está definido, creamos un nuevo usuario
       this.backHttpClientService.postUser(this.formUser.value)
         .subscribe( newUser => {
           this.store.dispatch(new NuevoUsuarioAction(newUser));
         });
     }
     else {
+      // Si lo está, lo actualizamos
       const userEdit = this.formUser.value;
       userEdit.id = this.dataUser.id;
       this.backHttpClientService.putUser(userEdit)
         .subscribe( editUser => {
-          // this.store.dispatch(new NuevoUsuarioAction(newUser));
+          this.store.dispatch(new EditarUsuarioAction(editUser));
         });
     }
 
