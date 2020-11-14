@@ -22,4 +22,8 @@ export class PageUsuariosComponent implements OnInit {
       });
   }
 
+  public borrarUsuarioArray(idUserDelete): void {
+    this.usuarios = this.usuarios.filter(user => user.id !== idUserDelete);
+  }
+
 }

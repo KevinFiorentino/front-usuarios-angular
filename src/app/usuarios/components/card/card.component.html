@@ -5,7 +5,7 @@
         <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary">Editar</button>
-        <button mat-raised-button color="accent">Eliminar</button>
+        <button (click)="editarUsuario()" mat-raised-button color="primary">Editar</button>
+        <button (click)="borrarUsuario()" mat-raised-button color="accent">Eliminar</button>
     </mat-card-actions>
 </mat-card>

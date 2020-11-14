@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Usuario } from '@shared/models/usuario.model';
+
+import { BackHttpClientService } from '@shared/services/back-http-client.service';
+
 
 @Component({
   selector: 'app-card',
@@ -9,7 +12,19 @@ import { Usuario } from '@shared/models/usuario.model';
 export class CardComponent {
 
   @Input() usuario: Usuario;
+  @Output() idUserDelete = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private backHttpClientService: BackHttpClientService) { }
+
+  public editarUsuario(): void {
+
+  }
+
+  public borrarUsuario(): void {
+    this.backHttpClientService.deleteUser(this.usuario.id)
+      .subscribe( user => {
+        this.idUserDelete.emit(user.id);
+      });
+  }
 
 }
