@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Usuario } from '@shared/models/usuario.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Usuario } from '@shared/models/usuario.model';
 })
 export class CardComponent {
 
-  public usuario: Usuario;
+  @Input() usuario: Usuario;
 
   constructor() { }
 

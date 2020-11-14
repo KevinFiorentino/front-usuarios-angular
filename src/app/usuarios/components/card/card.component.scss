@@ -1,8 +1,7 @@
-:host {
-    box-shadow: 0 3px 6px #00000029;
-}
 mat-card {
     width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 6px #00000029 !important;
 
     mat-card-title {
         margin-top: 15px;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '@shared/models/usuario.model';
 
+import { BackHttpClientService } from '@shared/services/back-http-client.service';
+
 
 @Component({
   selector: 'app-page-usuarios',
@@ -11,8 +13,13 @@ export class PageUsuariosComponent implements OnInit {
 
   public usuarios: Usuario[];
 
-  constructor() { }
+  constructor(private backHttpClientService: BackHttpClientService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.backHttpClientService.getAllUser()
+      .subscribe( data => {
+        this.usuarios = data;
+      });
+  }
 
 }

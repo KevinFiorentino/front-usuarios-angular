@@ -8,6 +8,8 @@
         <div fxFlex="auto" fxLayout="row wrap" fxLayoutAlign="space-between stretch">
 
             <app-card
+                *ngFor="let user of usuarios"
+                [usuario]="user"
                 fxFlex="auto" 
                 fxLayout="row"
                 fxFlex="100"

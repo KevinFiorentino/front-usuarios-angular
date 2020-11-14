@@ -1,8 +1,8 @@
 <mat-card>
-    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/sreejithexp/128.jpg">
+    <img [src]="usuario.image">
     <mat-card-content>
-        <mat-card-title>Kevin Fiorentino</mat-card-title>
-        <mat-card-subtitle>kevinfiorentino.1294@gmail.com</mat-card-subtitle>
+        <mat-card-title>{{ usuario.name }} {{ usuario.lastname }}</mat-card-title>
+        <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="primary">Editar</button>
