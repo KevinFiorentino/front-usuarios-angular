@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { FormUserComponent } from '@shared/components/form-user/form-user.component';
+import { FormUserComponent } from '@usuarios/components/form-user/form-user.component';
 
 
 @Component({
