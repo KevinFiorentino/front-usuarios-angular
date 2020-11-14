@@ -4,16 +4,22 @@
         <mat-label>Nombre/s</mat-label>
         <input matInput placeholder="Kevin" type="text" formControlName="name">
         <mat-icon matSuffix>account_box</mat-icon>
+        <mat-error *ngIf="getFieldName().hasError('required')">Campo requerido</mat-error>
+        <mat-error *ngIf="getFieldName().hasError('minlength')">Ingrese mínimo 3 caracteres</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Apellido</mat-label>
         <input matInput placeholder="Fiorentino" type="text" formControlName="lastname">
         <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-error *ngIf="getFieldLastname().hasError('required')">Campo requerido</mat-error>
+        <mat-error *ngIf="getFieldLastname().hasError('minlength')">Ingrese mínimo 3 caracteres</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Email</mat-label>
+        <mat-label>Correo electrónico</mat-label>
         <input matInput placeholder="k@f.com" type="email" formControlName="email">
         <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="getFieldEmail().hasError('required')">Campo requerido</mat-error>
+        <mat-error *ngIf="getFieldEmail().hasError('email')">Ingrese un email válido</mat-error>
     </mat-form-field>
     <p>*La imagen del usuario es random</p>
     <button type="submit" mat-raised-button color="primary">Agregar usuario</button>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Usuario } from '@shared/models/usuario.model';
 
 import { Store } from '@ngrx/store';
@@ -23,7 +23,7 @@ export class CardComponent {
   }
 
   public borrarUsuario(): void {
-     this.backHttpClientService.deleteUser(this.usuario.id)
+    this.backHttpClientService.deleteUser(this.usuario.id)
       .subscribe( user => {
         this.store.dispatch(new EliminarUsuarioAction(user));
       });
