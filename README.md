@@ -1,27 +1,37 @@
 # FrontUsuariosAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+# ChallengeRecursiva
 
-## Development server
+## Angular + Docker + NGINX + Heroku
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-## Code scaffolding
+#### INSTALL
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `npm install`
+- `ng serve`
 
-## Build
+#### Build DOCKER Manualmente
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- `docker build . -t challenge-recursiva:latest`
+- `docker run -d -p 80:80 challenge-recursiva:latest`
+- localhost/
 
-## Running unit tests
+#### Build DOCKER Automatizado
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `docker build . -t challenge-recursiva:latest`
+- `docker-compose up -d`
+- `docker-compose -d --build (Recompilar container)`
 
-## Running end-to-end tests
+#### DEPLOY WITH HEROKU CLI
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- add files:
+    - Dockerfile
+    - heroku.yml
+    - app.json (Para que funcione el botón `Deploy to Heroku` del README.md)
+- `heroku container:login`
+- `heroku create`
+- `docker tag challenge-recursiva registry.heroku.com/{APP_NAME_HEROKU}/web`
+- `docker push registry.heroku.com/{APP_NAME_HEROKU}/web`
+- `heroku container:release web --app={APP_NAME_HEROKU}`
+- `heroku open`

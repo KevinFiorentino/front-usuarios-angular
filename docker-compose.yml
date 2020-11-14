@@ -1,0 +1,7 @@
+version: '2'
+services:
+  front-usuarios-angular:
+    build: .
+    image: front-usuarios-angular
+    ports:
+      - '80:80'
