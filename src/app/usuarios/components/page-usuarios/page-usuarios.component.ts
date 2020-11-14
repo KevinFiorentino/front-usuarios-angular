@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '@shared/models/usuario.model';
+
 
 @Component({
   selector: 'app-page-usuarios',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageUsuariosComponent implements OnInit {
 
+  public usuarios: Usuario[];
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
