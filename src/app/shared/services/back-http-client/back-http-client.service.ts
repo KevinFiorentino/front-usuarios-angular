@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { environment } from '@environments/environment';
 import { Usuario } from '@shared/models/usuario.model';
 
 
@@ -27,7 +27,7 @@ export class BackHttpClientService {
 
 
   getAllUser(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>('https://5faf25e663e40a0016d8a580.mockapi.io/usuario')
+    return this.http.get<Usuario[]>(environment.url_api_back)
       .pipe(
         catchError(this.handleError)
       );
@@ -41,7 +41,7 @@ export class BackHttpClientService {
   }
 
   postUser(user: Partial<Usuario>): Observable<Usuario> {
-    return this.http.post<Usuario>('https://5faf25e663e40a0016d8a580.mockapi.io/usuario', user)
+    return this.http.post<Usuario>(environment.url_api_back, user)
       .pipe(
         catchError(this.handleError)
       );
@@ -55,7 +55,7 @@ export class BackHttpClientService {
   }
 
   deleteUser(id: string): Observable<Usuario> {
-    return this.http.delete<Usuario>(`https://5faf25e663e40a0016d8a580.mockapi.io/usuario/${id}`)
+    return this.http.delete<Usuario>(`${environment.url_api_back}${id}`)
       .pipe(
         catchError(this.handleError)
       );

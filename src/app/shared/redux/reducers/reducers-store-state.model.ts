@@ -4,15 +4,24 @@
 ====================================== */
 
 import { StoreStateUsuarios } from '../store-state.model';
-import { StoreStateTypes, NuevoUsuarioAction, EliminarUsuarioAction, EditarUsuarioAction } from '../actions/actions-store-state.model';
+import { StoreStateTypes, LoadUsuariosAction, NuevoUsuarioAction, EliminarUsuarioAction, EditarUsuarioAction } from '../actions/actions-store-state.model';
 
 
-export type UsuariosActions = NuevoUsuarioAction | EliminarUsuarioAction | EditarUsuarioAction;
+export type UsuariosActions = LoadUsuariosAction | NuevoUsuarioAction | EliminarUsuarioAction | EditarUsuarioAction;
 
 // REDUCERS USUARIOS
 export function reducerUsuarios(state: StoreStateUsuarios, action: UsuariosActions): StoreStateUsuarios {
   switch (action.type) {
-    case StoreStateTypes.NUEVO_USUARIO: {
+    case StoreStateTypes.LOAD_USUARIOS: {
+      return {
+        ...state,
+        storeUsuarios: [
+          ...state.storeUsuarios,
+          (action as LoadUsuariosAction).usuarios
+        ]
+      };
+    }
+/*     case StoreStateTypes.NUEVO_USUARIO: {
         console.log('NUEVO')
         return {
           ...state,
@@ -29,7 +38,7 @@ export function reducerUsuarios(state: StoreStateUsuarios, action: UsuariosActio
         return {
           ...state,
         };
-    }
+    } */
     default: {
       return state;
     }

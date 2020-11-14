@@ -2,10 +2,12 @@
              INIT STATE NGRX
 ====================================== */
 
+import { Usuario } from '@shared/models/usuario.model';
+
 // ESTADO e INICIALIZACIONES
 
 export interface StoreStateUsuarios {
-  storeUsuarios: string;
+  storeUsuarios: Array<Usuario[]>;
 }
 
 export const initStoreStateUsuarios = () => {
