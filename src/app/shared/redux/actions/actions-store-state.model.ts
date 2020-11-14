@@ -14,10 +14,6 @@ export enum StoreStateTypes {
 }
 
 // ACCIONES USUARIOS
-export class LoadUsuariosAction implements Action {
-  type = StoreStateTypes.LOAD_USUARIOS;
-  constructor(public usuarios: Usuario[]) { }
-}
 export class NuevoUsuarioAction implements Action {
   type = StoreStateTypes.NUEVO_USUARIO;
   constructor(public usuario: Usuario) { }

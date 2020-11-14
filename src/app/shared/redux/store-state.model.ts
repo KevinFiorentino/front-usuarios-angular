@@ -7,11 +7,11 @@ import { Usuario } from '@shared/models/usuario.model';
 // ESTADO e INICIALIZACIONES
 
 export interface StoreStateUsuarios {
-  storeUsuarios: Array<Usuario[]>;
+  storeUsuarios: Usuario[];
 }
 
 export const initStoreStateUsuarios = () => {
   return {
-    storeUsuarios: null
+    storeUsuarios: []
   };
 };
