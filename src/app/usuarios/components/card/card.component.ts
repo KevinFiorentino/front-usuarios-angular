@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Usuario } from '@shared/models/usuario.model';
+import { FormUserComponent } from '@usuarios/components/form-user/form-user.component';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/redux/config-store-state.model';
@@ -16,10 +18,15 @@ export class CardComponent {
 
   @Input() usuario: Usuario;
 
-  constructor(private store: Store<AppState>, private backHttpClientService: BackHttpClientService) { }
+  constructor(
+    private store: Store<AppState>,
+    private backHttpClientService: BackHttpClientService,
+    public dialog: MatDialog) { }
 
   public editarUsuario(): void {
-
+    this.dialog.open(FormUserComponent, {
+      data: this.usuario
+    });
   }
 
   public borrarUsuario(): void {

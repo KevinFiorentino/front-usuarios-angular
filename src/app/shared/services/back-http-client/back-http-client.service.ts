@@ -14,6 +14,14 @@ export class BackHttpClientService {
   constructor(private http: HttpClient) { }
 
 
+  private getHttpHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'content-type': 'application/json'
+      })
+    };
+  }
+
   // Funciona para manejar los errores en la API
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -22,40 +30,40 @@ export class BackHttpClientService {
     else {
       console.log('Error del servidor:', error.status, error.message)
     }
-    return throwError('Error en la comunicación HTTP')
+    return throwError('Error en la comunicación HTTP');
   }
 
 
   getAllUser(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(environment.url_api_back)
+    return this.http.get<Usuario[]>(environment.url_api_back, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getUser(id: string): Observable<Usuario> {
-    return this.http.get<Usuario>('')
+    return this.http.get<Usuario>(`${environment.url_api_back}${id}`, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   postUser(user: Partial<Usuario>): Observable<Usuario> {
-    return this.http.post<Usuario>(environment.url_api_back, user)
+    return this.http.post<Usuario>(environment.url_api_back, user, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  putUser(): Observable<Usuario> {
-    return this.http.put<Usuario>('', {})
+  putUser(user: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${environment.url_api_back}${user.id}`, user, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   deleteUser(id: string): Observable<Usuario> {
-    return this.http.delete<Usuario>(`${environment.url_api_back}${id}`)
+    return this.http.delete<Usuario>(`${environment.url_api_back}${id}`, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );

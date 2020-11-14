@@ -1,4 +1,4 @@
-<form [formGroup]="formUser" (ngSubmit)="addUser()" fxFlex="100" fxLayout="column wrap" fxLayoutAlign="space-around start">
+<form [formGroup]="formUser" (ngSubmit)="addOrEditUser()" fxFlex="100" fxLayout="column wrap" fxLayoutAlign="space-around start">
     <h1>Información del usuario</h1>
     <mat-form-field>
         <mat-label>Nombre/s</mat-label>
@@ -22,5 +22,6 @@
         <mat-error *ngIf="getFieldEmail().hasError('email')">Ingrese un email válido</mat-error>
     </mat-form-field>
     <p>*La imagen del usuario es random</p>
-    <button type="submit" mat-raised-button color="primary">Agregar usuario</button>
+    <button *ngIf="!dataUser" type="submit" mat-raised-button color="primary">Agregar usuario</button>
+    <button *ngIf="dataUser" type="submit" mat-raised-button color="primary">Editar usuario</button>
 </form>
