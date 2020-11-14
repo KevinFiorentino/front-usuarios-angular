@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators  } from '@angular/forms';
+import { BackHttpClientService } from '@shared/services/back-http-client.service';
+
 
 @Component({
   selector: 'app-form-user',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormUserComponent implements OnInit {
 
-  constructor() { }
+  public formUser = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    lastname: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+  });
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private backHttpClientService: BackHttpClientService) { }
+
+  ngOnInit(): void { }
+
+  addUser(): void {
+    this.backHttpClientService.postUser(this.formUser.value)
+      .subscribe( newUser => {
+        console.log(newUser);
+      });
   }
 
 }

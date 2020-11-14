@@ -40,8 +40,8 @@ export class BackHttpClientService {
       );
   }
 
-  postUser(): Observable<Usuario> {
-    return this.http.post<Usuario>('', {})
+  postUser(user: Partial<Usuario>): Observable<Usuario> {
+    return this.http.post<Usuario>('https://5faf25e663e40a0016d8a580.mockapi.io/usuario', user)
       .pipe(
         catchError(this.handleError)
       );
