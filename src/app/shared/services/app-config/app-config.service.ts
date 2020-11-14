@@ -20,7 +20,7 @@ export class AppConfigService {
             this.store.dispatch(new NuevoUsuarioAction(user));
           });
           resolve('OK');
-        })
+        });
     });
   }
 

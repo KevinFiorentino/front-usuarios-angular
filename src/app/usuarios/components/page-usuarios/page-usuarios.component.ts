@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '@shared/models/usuario.model';
 
 import { BackHttpClientService } from '@shared/services/back-http-client/back-http-client.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '@shared/redux/config-store-state.model';
 
 
 @Component({
@@ -13,17 +15,15 @@ export class PageUsuariosComponent implements OnInit {
 
   public usuarios: Usuario[];
 
-  constructor(private backHttpClientService: BackHttpClientService) { }
-
-  ngOnInit(): void {
-    this.backHttpClientService.getAllUser()
-      .subscribe( data => {
-        this.usuarios = data;
-      });
+  constructor(private store: Store<AppState>, private backHttpClientService: BackHttpClientService) {
+    this.usuarios = new Array();
   }
 
-  public borrarUsuarioArray(idUserDelete): void {
-    this.usuarios = this.usuarios.filter(user => user.id !== idUserDelete);
+  ngOnInit(): void {
+    this.store.select(state => state.storeUsuarios)
+      .subscribe(data => {
+        this.usuarios = data.storeUsuarios;
+      });
   }
 
 }

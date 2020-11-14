@@ -20,7 +20,7 @@ export class NuevoUsuarioAction implements Action {
 }
 export class EditarUsuarioAction implements Action {
   type = StoreStateTypes.ELIMINAR_USUARIO;
-  constructor(public idUserDelete: string) { }
+  constructor(public usuario: Usuario) { }
 }
 export class EliminarUsuarioAction implements Action {
   type = StoreStateTypes.ELIMINAR_USUARIO;

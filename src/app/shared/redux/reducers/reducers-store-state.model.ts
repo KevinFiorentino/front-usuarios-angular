@@ -22,15 +22,17 @@ export function reducerUsuarios(state: StoreStateUsuarios, action: UsuariosActio
       };
     }
     case StoreStateTypes.EDITAR_USUARIO: {
-      console.log('EDIT')
+      console.log('EDIT');
       return {
         ...state,
       };
     }
     case StoreStateTypes.ELIMINAR_USUARIO: {
-      console.log('DELETE')
       return {
         ...state,
+        storeUsuarios: [
+          ...state.storeUsuarios.filter(user => user.id !== (action as EliminarUsuarioAction).usuario.id)
+        ]
       };
     }
     default: {
