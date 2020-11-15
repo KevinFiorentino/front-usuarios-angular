@@ -14,6 +14,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class FormUserComponent {
 
+  public genero: string;
   public formUser = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     lastname: ['', [Validators.required, Validators.minLength(3)]],
@@ -38,8 +39,14 @@ export class FormUserComponent {
   addOrEditUser(): void {
 
     if (!this.dataUser) {
+
       // Si no está definido, creamos un nuevo usuario
-      this.backHttpClientService.postUser(this.formUser.value)
+      const kevin = this.formUser.value;
+      const random = Math.floor(Math.random() * (61 - 0)) + 0;
+      const genero = random % 2 === 0 ? 'men' : 'women';
+      kevin.image = `https://randomuser.me/g/portraits/${genero}/${random}.jpg`;
+
+      this.backHttpClientService.postUser(kevin)
         .subscribe( newUser => {
           this.store.dispatch(new NuevoUsuarioAction(newUser));
         });
