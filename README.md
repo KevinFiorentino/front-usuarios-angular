@@ -1,8 +1,6 @@
 # FrontUsuariosAngular
 
-# ChallengeRecursiva
-
-## Angular + Docker + NGINX + Heroku
+## Angular + Redux + Docker + NGINX + Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 

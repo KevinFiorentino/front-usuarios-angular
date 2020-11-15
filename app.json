@@ -1,0 +1,7 @@
+{
+    "name": "front-usuarios-angular",
+    "description": "Front-end de usuarios con Angular + Redux",
+    "repository": "https://github.com/KevinFiorentino/front-usuarios-angular",
+    "keywords": ["heroku", "angular", "redux", "docker", "nginx"],
+    "stack": "container"
+}
