@@ -35,35 +35,35 @@ export class BackHttpClientService {
 
 
   getAllUser(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(environment.url_api_back, this.getHttpHeaders())
+    return this.http.get<Usuario[]>(`${environment.url_api_back}/users`, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getUser(id: string): Observable<Usuario> {
-    return this.http.get<Usuario>(`${environment.url_api_back}${id}`, this.getHttpHeaders())
+    return this.http.get<Usuario>(`${environment.url_api_back}/users/${id}`, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   postUser(user: Partial<Usuario>): Observable<Usuario> {
-    return this.http.post<Usuario>(environment.url_api_back, user, this.getHttpHeaders())
+    return this.http.post<Usuario>(`${environment.url_api_back}/users`, user, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   putUser(user: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${environment.url_api_back}${user.id}`, user, this.getHttpHeaders())
+    return this.http.put<Usuario>(`${environment.url_api_back}/users/${user.id}`, user, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   deleteUser(id: string): Observable<Usuario> {
-    return this.http.delete<Usuario>(`${environment.url_api_back}${id}`, this.getHttpHeaders())
+    return this.http.delete<Usuario>(`${environment.url_api_back}/users/${id}`, this.getHttpHeaders())
       .pipe(
         catchError(this.handleError)
       );
